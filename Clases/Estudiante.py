@@ -1,21 +1,23 @@
-from Persona import Persona
+from Clases.Persona import Persona
 
 class Estudiante(Persona):
-    _contador_estudiantes = 0
-
-    def __init__(self, nombre: str, apellido: str, fecha_de_nacimiento: str, matricula: str, carrera: str, semestre: int):
+    def __init__(self, nombre, apellido, fecha_de_nacimiento, matricula, carrera, semestre):
         super().__init__(nombre, apellido, fecha_de_nacimiento)
         self._matricula = matricula
         self._carrera = carrera
         self._semestre = semestre
-        Estudiante._contador_estudiantes += 1
 
-    @classmethod
-    def cantidad_estudiantes(cls) -> int:
-        return cls._contador_estudiantes
+    @property
+    def matricula(self):
+        return self._matricula
 
-    def estudiar(self, materia: str, horas: int) -> None:
-        print(f"Estudiante {self._nombre} está estudiando {materia} durante {horas} horas.")
+    @matricula.setter
+    def matricula(self, value):
+        self._matricula = value
 
-    def presentarse(self) -> str:
-        return super().presentarse() + f", Matrícula: {self._matricula}, Carrera: {self._carrera}, Semestre: {self._semestre}"
+    def estudiar(self, materia, horas):
+        print(f"{self._nombre} está estudiando {materia} durante {horas} horas.")
+
+    def presentarse(self):
+        super().presentarse()
+        print(f"Soy estudiante de {self._carrera}, matrícula: {self._matricula}.")

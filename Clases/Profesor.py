@@ -1,20 +1,22 @@
-from Persona import Persona
+from Clases.Persona import Persona
 
 class Profesor(Persona):
-    _contador_profesores = 0
-
-    def __init__(self, nombre: str, apellido: str, fecha_de_nacimiento: str, numero_empleado: str, departamento: str):
+    def __init__(self, nombre, apellido, fecha_de_nacimiento, numero_empleado, departamento):
         super().__init__(nombre, apellido, fecha_de_nacimiento)
         self._numero_empleado = numero_empleado
         self._departamento = departamento
-        Profesor._contador_profesores += 1
 
-    @classmethod
-    def cantidad_profesores(cls) -> int:
-        return cls._contador_profesores
+    @property
+    def numero_empleado(self):
+        return self._numero_empleado
 
-    def enseniar(self, materia: str) -> None:
-        print(f"Profesor {self._nombre} está enseñando {materia}.")
+    @numero_empleado.setter
+    def numero_empleado(self, value):
+        self._numero_empleado = value
 
-    def presentarse(self) -> str:
-        return super().presentarse() + f", Número Empleado: {self._numero_empleado}, Departamento: {self._departamento}"
+    def enseñar(self, materia):
+        print(f"{self._nombre} está enseñando {materia}.")
+
+    def presentarse(self):
+        super().presentarse()
+        print(f"Soy profesor del departamento de {self._departamento}, número de empleado: {self._numero_empleado}.")
