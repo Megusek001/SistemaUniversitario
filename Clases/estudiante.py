@@ -1,4 +1,4 @@
-from Clases.Persona import Persona
+from Clases.persona import Persona
 
 class Estudiante(Persona):
     def __init__(self, nombre, apellido, fecha_nacimiento, matricula, carrera, semestre):
