@@ -1,8 +1,8 @@
 from Clases.Persona import Persona
 
 class Estudiante(Persona):
-    def __init__(self, nombre: str, apellido: str, fecha_de_nacimiento: str, matricula: str, carrera: str, semestre: int):
-        super().__init__(nombre, apellido, fecha_de_nacimiento)
+    def __init__(self, nombre, apellido, fecha_nacimiento, matricula, carrera, semestre):
+        super().__init__(nombre, apellido, fecha_nacimiento)
         self._matricula = matricula
         self._carrera = carrera
         self._semestre = semestre
@@ -31,8 +31,5 @@ class Estudiante(Persona):
     def semestre(self, valor):
         self._semestre = valor
 
-    def estudiar(self, materia: str, horas: int):
-        print(f"El estudiante {self.nombre} ha estudiado {materia} durante {horas} horas.")
-
     def presentarse(self):
-        print(f"Hola, soy {self.nombre} {self.apellido}, estudiante de {self.carrera}, cursando el semestre {self.semestre}.")
+        return f"Soy {self._nombre} {self._apellido}, estudiante de {self._carrera}, en el semestre {self._semestre}."

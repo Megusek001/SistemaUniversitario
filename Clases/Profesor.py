@@ -1,8 +1,8 @@
-from Clases.Profesor import Persona
+from Clases.Persona import Persona
 
 class Profesor(Persona):
-    def __init__(self, nombre: str, apellido: str, fecha_de_nacimiento: str, numero_empleado: str, departamento: str):
-        super().__init__(nombre, apellido, fecha_de_nacimiento)
+    def __init__(self, nombre, apellido, fecha_nacimiento, numero_empleado, departamento):
+        super().__init__(nombre, apellido, fecha_nacimiento)
         self._numero_empleado = numero_empleado
         self._departamento = departamento
 
@@ -22,8 +22,5 @@ class Profesor(Persona):
     def departamento(self, valor):
         self._departamento = valor
 
-    def enseñar(self, materia: str):
-        print(f"El profesor {self.nombre} está enseñando {materia}.")
-
     def presentarse(self):
-        print(f"Hola, soy {self.nombre} {self.apellido}, profesor del departamento de {self.departamento}.")
+        return f"Soy {self._nombre} {self._apellido}, profesor del departamento de {self._departamento}."

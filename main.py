@@ -1,33 +1,43 @@
-from Clases.ProgramaAcademico import ProgramaAcademico
+from Clases.Estudiante import Estudiante
 from Clases.Profesor import Profesor
 from Clases.Asignatura import Asignatura
 from Clases.Grupo import Grupo
-from Clases.Estudiante import Estudiante
-from interfaz.interfazTkinter import Interfaz
-import tkinter as tk
+from Clases.ProgramaAcademico import ProgramaAcademico
+from interfaz_GUI.app import App  # Importa la clase App
+ 
+# Inicializar listas para almacenar entidades
+estudiantes = []
+profesores = []
+asignaturas = []
+grupos = []
+programas_academicos = []
 
-def main():
-    # Crear instancias de las clases
-    programa = ProgramaAcademico("Ingeniería en Sistemas", "IS123")
-    profesor = Profesor("Juan", "Pérez", "1980-01-01", "12345", "Computación")
-    asignatura = Asignatura("Programación", "PROG101", 4)
-    grupo = Grupo(1, asignatura, profesor)
+def agregar_estudiante(nombre, apellido, fecha_de_nacimiento, matricula, carrera, semestre):
+    estudiante = Estudiante(nombre, apellido, fecha_de_nacimiento, matricula, carrera, semestre)
+    estudiantes.append(estudiante)
+    print(f"Estudiante agregado: {estudiante}")
 
-    # Crear estudiantes
-    estudiante1 = Estudiante("Ana", "Gómez", "2000-05-10", "E001", "Ingeniería en Sistemas", 1)
-    estudiante2 = Estudiante("Luis", "Martínez", "1999-07-20", "E002", "Ingeniería en Sistemas", 1)
+def agregar_profesor(nombre, apellido, fecha_de_nacimiento, numero_empleado, departamento):
+    profesor = Profesor(nombre, apellido, fecha_de_nacimiento, numero_empleado, departamento)
+    profesores.append(profesor)
+    print(f"Profesor agregado: {profesor}")
 
-    # Agregar estudiantes al grupo
-    grupo.agregar_estudiante(estudiante1)
-    grupo.agregar_estudiante(estudiante2)
+def agregar_asignatura(nombre, codigo, creditos):
+    asignatura = Asignatura(nombre, codigo, creditos)
+    asignaturas.append(asignatura)
+    print(f"Asignatura agregada: {asignatura}")
 
-    # Agregar grupo al programa académico
-    programa.agregar_grupo(grupo)
+def agregar_grupo(numero_grupo, asignatura, profesor):
+    grupo = Grupo(numero_grupo, asignatura, profesor)
+    grupos.append(grupo)
+    print(f"Grupo agregado: {grupo}")
 
-    # Crear y mostrar la interfaz
-    root = tk.Tk()
-    app = Interfaz(root)
-    root.mainloop()
+def agregar_programa_academico(nombre, codigo):
+    programa = ProgramaAcademico(nombre, codigo)
+    programas_academicos.append(programa)
+    print(f"Programa Académico agregado: {programa}")
 
+# Aquí puedes agregar más funciones para eliminar y mostrar, según sea necesario
 if __name__ == "__main__":
-    main()
+    app = App()  # Crea una instancia de la clase App
+    app.mainloop()  # Inicia el bucle de la interfaz gráfica

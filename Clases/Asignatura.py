@@ -1,5 +1,5 @@
 class Asignatura:
-    def __init__(self, nombre: str, codigo: str, creditos: int):
+    def __init__(self, nombre, codigo, creditos):
         self._nombre = nombre
         self._codigo = codigo
         self._creditos = creditos
@@ -29,4 +29,4 @@ class Asignatura:
         self._creditos = valor
 
     def mostrar_informacion(self):
-        print(f"Asignatura: {self._nombre}, Código: {self._codigo}, Créditos: {self._creditos}")
+        return f"Asignatura: {self._nombre}, Código: {self._codigo}, Créditos: {self._creditos}"
